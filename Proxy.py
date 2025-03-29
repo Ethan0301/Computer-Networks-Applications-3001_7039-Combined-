@@ -9,6 +9,7 @@ import re
 BUFFER_SIZE = 1000000
 
 # Get the IP address and Port number to use for this web proxy server
+#
 parser = argparse.ArgumentParser()
 parser.add_argument('hostname', help='the IP Address Of Proxy Server')
 parser.add_argument('port', help='the port number of the proxy server')
@@ -20,6 +21,8 @@ proxyPort = int(args.port)
 try:
   # Create a server socket
   # ~~~~ INSERT CODE ~~~~
+  S_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #IPv4 
+  # Such a socket should be constructed with socket(AF_INET, SOCK_DGRAM, IPPROTO_UDPLITE) for IPv4 or socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDPLITE) for IPv6.(socket — Low-level networking interface)
   # ~~~~ END CODE INSERT ~~~~
   print ('Created socket')
 except:
@@ -29,6 +32,7 @@ except:
 try:
   # Bind the the server socket to a host and port
   # ~~~~ INSERT CODE ~~~~
+  S_socket.bind((proxyHost, proxyPort)) #From line 17-18
   # ~~~~ END CODE INSERT ~~~~
   print ('Port is bound')
 except:
@@ -38,6 +42,7 @@ except:
 try:
   # Listen on the server socket
   # ~~~~ INSERT CODE ~~~~
+  S_socket.listen(5) # maximum number of queued connections
   # ~~~~ END CODE INSERT ~~~~
   print ('Listening to socket')
 except:
@@ -52,6 +57,7 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
+
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:
@@ -61,6 +67,7 @@ while True:
   # Get HTTP request from client
   # and store it in the variable: message_bytes
   # ~~~~ INSERT CODE ~~~~
+
   # ~~~~ END CODE INSERT ~~~~
   message = message_bytes.decode('utf-8')
   print ('Received request:')

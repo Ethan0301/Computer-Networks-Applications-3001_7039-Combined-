@@ -59,11 +59,7 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
-    clinetSocket, clientaddress = Se_socket.accept #Return a new socket
-
-
-  #insert end
-
+    clinetSocket, clientAddress = Se_socket.accept() #Return a new socket
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:
@@ -73,7 +69,7 @@ while True:
   # Get HTTP request from client
   # and store it in the variable: message_bytes
   # ~~~~ INSERT CODE ~~~~
-
+  message_bytes = clientSocket.recv(BUFFER_SIZE) #Receive data from the socket, socket.recv(bufsize[, flags])
   # ~~~~ END CODE INSERT ~~~~
   message = message_bytes.decode('utf-8')
   print ('Received request:')

@@ -59,7 +59,7 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
-    clinetSocket, clientAddress = Se_socket.accept() #Return a new socket
+    clientSocket, clientAddress = Se_socket.accept() #Return a new socket
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:
@@ -123,9 +123,9 @@ while True:
     # Send back response to client 
     # ~~~~ INSERT CODE ~~~~
     for DataLine in cacheData:
-      clientSocket.send(DataLine.encode) #Send data to the socket. The socket must be connected to a remote socket. The optional flags argument has the same meaning as for recv() above.
+      clientSocket.send(DataLine.encode()) #Send data to the socket. Transfer into bytes
     # ~~~~ END CODE INSERT ~~~~
-    cacheFile.close()
+    cacheFile.close() 
     print ('Sent to the client:')
     print ('> ' + cacheData)
   except:
@@ -167,6 +167,7 @@ while True:
       except socket.error:
         print ('Forward request to origin failed')
         sys.exit()
+
 
       print('Request sent to origin server\n')
 

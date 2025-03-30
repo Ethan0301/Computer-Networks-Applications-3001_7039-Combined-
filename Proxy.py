@@ -59,6 +59,10 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
+    clinetSocket, clientaddress = Se_socket.accept #Return a new socket
+
+
+  #insert end
 
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')

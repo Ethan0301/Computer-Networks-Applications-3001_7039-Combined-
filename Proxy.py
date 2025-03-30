@@ -104,7 +104,7 @@ while True:
 
   print ('Requested Resource:\t' + resource)
 
-  # Check if resource is in cache
+  # Check if resource is in cache 
   try:
     cacheLocation = './' + hostname + resource
     if cacheLocation.endswith('/'):
@@ -116,12 +116,14 @@ while True:
     
     # Check wether the file is currently in the cache
     cacheFile = open(cacheLocation, "r")
-    cacheData = cacheFile.readlines()
+    cacheData = cacheFile.readlines()  #local cache 
 
     print ('Cache hit! Loading from cache file: ' + cacheLocation)
     # ProxyServer finds a cache hit
     # Send back response to client 
     # ~~~~ INSERT CODE ~~~~
+    for DataLine in cacheData:
+      clientSocket.send(DataLine.encode) #Send data to the socket. The socket must be connected to a remote socket. The optional flags argument has the same meaning as for recv() above.
     # ~~~~ END CODE INSERT ~~~~
     cacheFile.close()
     print ('Sent to the client:')

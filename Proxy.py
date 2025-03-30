@@ -5,6 +5,8 @@ import os
 import argparse
 import re
 
+
+
 # 1MB buffer size
 BUFFER_SIZE = 1000000
 
@@ -21,7 +23,7 @@ proxyPort = int(args.port)
 try:
   # Create a server socket
   # ~~~~ INSERT CODE ~~~~
-  S_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #IPv4 
+  Se_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #IPv4 
   # Such a socket should be constructed with socket(AF_INET, SOCK_DGRAM, IPPROTO_UDPLITE) for IPv4 or socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDPLITE) for IPv6.(socket — Low-level networking interface)
   # ~~~~ END CODE INSERT ~~~~
   print ('Created socket')
@@ -32,7 +34,7 @@ except:
 try:
   # Bind the the server socket to a host and port
   # ~~~~ INSERT CODE ~~~~
-  S_socket.bind((proxyHost, proxyPort)) #From line 17-18
+  Se_socket.bind((proxyHost, proxyPort)) #From line 17-18
   # ~~~~ END CODE INSERT ~~~~
   print ('Port is bound')
 except:
@@ -42,7 +44,7 @@ except:
 try:
   # Listen on the server socket
   # ~~~~ INSERT CODE ~~~~
-  S_socket.listen(5) # maximum number of queued connections
+  Se_socket.listen(5) # maximum number of queued connections
   # ~~~~ END CODE INSERT ~~~~
   print ('Listening to socket')
 except:

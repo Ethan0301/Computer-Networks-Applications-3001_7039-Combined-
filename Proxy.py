@@ -23,7 +23,7 @@ proxyPort = int(args.port)
 try:
   # Create a server socket
   # ~~~~ INSERT CODE ~~~~
-  Se_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #IPv4 
+  Se_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #Create a new socket using the given address family and socket type.
   # Such a socket should be constructed with socket(AF_INET, SOCK_DGRAM, IPPROTO_UDPLITE) for IPv4 or socket(AF_INET6, SOCK_DGRAM, IPPROTO_UDPLITE) for IPv6.(socket — Low-level networking interface)
   # ~~~~ END CODE INSERT ~~~~
   print ('Created socket')
@@ -34,7 +34,7 @@ except:
 try:
   # Bind the the server socket to a host and port
   # ~~~~ INSERT CODE ~~~~
-  Se_socket.bind((proxyHost, proxyPort)) #From line 17-18
+  Se_socket.bind((proxyHost, proxyPort))  #From line 17-18
   # ~~~~ END CODE INSERT ~~~~
   print ('Port is bound')
 except:
@@ -44,7 +44,7 @@ except:
 try:
   # Listen on the server socket
   # ~~~~ INSERT CODE ~~~~
-  Se_socket.listen(5) # maximum number of queued connections
+  Se_socket.listen(5) # Maximum number of queued connections
   # ~~~~ END CODE INSERT ~~~~
   print ('Listening to socket')
 except:
@@ -59,7 +59,7 @@ while True:
   # Accept connection from client and store in the clientSocket
   try:
     # ~~~~ INSERT CODE ~~~~
-    clientSocket, clientAddress = Se_socket.accept() #Return a new socket
+    clientSocket, clientAddress = Se_socket.accept() #It will return a new socket
     # ~~~~ END CODE INSERT ~~~~
     print ('Received a connection')
   except:
@@ -123,7 +123,7 @@ while True:
     # Send back response to client 
     # ~~~~ INSERT CODE ~~~~
     for DataLine in cacheData:
-      clientSocket.send(DataLine.encode()) #Send data to the socket. Transfer into bytes
+      clientSocket.send(DataLine.encode()) #Send data to the socket, transfer into bytes
     # ~~~~ END CODE INSERT ~~~~
     cacheFile.close() 
     print ('Sent to the client:')
@@ -134,7 +134,7 @@ while True:
     # Create a socket to connect to origin server
     # and store in originServerSocket
     # ~~~~ INSERT CODE ~~~~
-    originServerSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #IPv4
+    originServerSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #get the socket ip address
     # ~~~~ END CODE INSERT ~~~~
 
     print ('Connecting to:\t\t' + hostname + '\n')
@@ -155,7 +155,7 @@ while True:
       # originServerRequestHeader is the second line in the request
       # ~~~~ INSERT CODE ~~~~
       originServerRequest = f"GET {resource} HTTP/1.1"#get resource from origin server
-      originServerRequestHeader = f"Host: {hostname}" #host name
+      originServerRequestHeader = f"Host: {hostname}" #get the hostname
       # ~~~~ END CODE INSERT ~~~~
 
       # Construct the request to send to the origin server
